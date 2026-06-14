@@ -44,7 +44,7 @@ export default function AIComposer() {
     //   setGenerations(response.data || []);
     // } catch (error: any) {
     //   toast.error('Failed to load generations');
-    // } finally {
+    // } finally {kjfjf
     //   setFetchLoading(false);
     // }
   };
