@@ -7,6 +7,8 @@ import authRouter from "./routes/authRoutes.js";
 import socialORouter from "./routes/socialAuthRoutes.js";
 import accountRouter from "./routes/accountsRoutes.js";
 import postRouter from "./routes/postRoutes.js";
+import activityRouter from "./routes/activityRoutes.js";
+import { initScheduler } from "./services/schedulerService.js";
 const app = express();
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 const startServer = async () => {
@@ -27,6 +29,10 @@ const startServer = async () => {
         app.use("/api/oauth", socialORouter)
         app.use("/api/accounts", accountRouter)
         app.use("/api/posts" , postRouter)
+        app.use("/api/activity" , activityRouter)
+        //initialize scheduler
+        initScheduler()
+        app.use("/api")
     app.use((err : any, req :Request, res: Response , next : NextFunction )=>{
       console.error(err);
       res.status(500).send(err?.response?.data?.message || err?.message )
