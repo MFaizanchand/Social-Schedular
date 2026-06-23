@@ -30,9 +30,8 @@ const startServer = async () => {
         app.use("/api/accounts", accountRouter)
         app.use("/api/posts" , postRouter)
         app.use("/api/activity" , activityRouter)
-        //initialize scheduler
+        //initialize schedulerdsd
         initScheduler()
-        app.use("/api")
     app.use((err : any, req :Request, res: Response , next : NextFunction )=>{
       console.error(err);
       res.status(500).send(err?.response?.data?.message || err?.message )
